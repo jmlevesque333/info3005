@@ -1,334 +1,299 @@
-#include <string>
-#include <iostream>
-#include <cmath>
-
-
-float pi = 3.14159265359;
-
-class figureGeo
+class Shapes
 {
-protected:
-    int dimension;
-};
+    class figure2D
+    {
+        void set(double h, double hauteur)
+        {
+            this.h = h;
+            this.hauteur = hauteur;
+        }
+        public double h;
+        protected double hauteur;
+        double pi = 3.14159265359;
+    }
+    
+    class figure3D extends figure2D
+    {
+        void set(double h, double hauteur, double longeur)
+        {
+            this.h = h;
+            this.hauteur = hauteur;
+            this.longeur = longeur;
+        }
+        protected double longeur;
+    }
+    
+    class rectangle extends figure2D
+    {
+        double perimetre()
+        {
+            return h*2.0 + hauteur*2.0;
+        }
+        double aire()
+        {
+            return h*hauteur;
+        }
+    }
+    
+    class carre extends figure2D
+    {
+        void set(double h)
+        {
+            this.h = h;
+        }
+        double perimetre()
+        {
+            return h*4.0;
+        }
+        double aire()
+        {
+            return h*h;
+        }
+        double diagonale()
+        {
+            return h*Math.sqrt(2);
+        }
+    }
+    
+    class parallelogramme extends figure2D
+    {
+        void set(double h, double hauteur)
+        {
+            this.h = h;
+            this.hauteur = hauteur;
+        }
+        double aire()
+        {
+            return h*hauteur;
+        }
+    }
+    
+    class trapeze extends figure2D
+    {
+        void set(double grandeh, double petiteh, double hauteur)
+        {
+            this.grandeh = grandeh;
+            this.petiteh = petiteh;
+            this.hauteur = hauteur;
+        }
+        double aire()
+        {
+            return ((petiteh + grandeh) * hauteur)/2.0;
+        }
+        protected double petiteh;
+        protected double grandeh;
+    }
+    
+    class triangle extends figure2D
+    {
+        double aire()
+        {
+            return h*hauteur/2.0; 
+        }
+    }
+    
+    class triangleEq extends figure2D
+    {
+        void set(double h)
+        {
+            this.h = h;
+        }
+        double perimetre()
+        {
+            return h*3.0;
+        }
+        double hauteur()
+        {
+            return h*Math.sqrt(3)/4.0;
+        }
+        double aire()
+        {
+            return (h*h)*Math.sqrt(3)/4.0;
+        }
+    }
+    
+    class triangleRecIso extends figure2D
+    {
+        void set(double h)
+        {
+            this.h = h;
+        }
+        double hypothenuse()
+        {
+            return h*Math.sqrt(2);
+        }
+        double hauteur()
+        {
+            return h/Math.sqrt(2);
+        }
+        double aire()
+        {
+            return h*h/2.0;
+        }
+    }
+    
+    class cercle extends figure2D
+    {
+        void set(double rayon)
+        {
+            this.rayon = rayon;
+        }
+        double perimetre()
+        {
+            return 2.0*pi*rayon;
+        }
+        double aire()
+        {
+            return pi*rayon*rayon;
+        }
+        protected double rayon;
+    }
+    
+    class secteurAngle extends figure2D
+    {
+        void set(double rayon, double radiant)
+        {
+            this.rayon = rayon;
+            this.radiant = radiant;
+        }
+        double longeur()
+        {
+            return rayon*radiant;
+        }
+        double aire()
+        {
+            return radiant*rayon*rayon/2.0;
+        }
+        protected double radiant;
+        protected double rayon;
+    }
+    
+    class parallelepipede extends figure3D
+    {
+        double volume()
+        {
+            return h*hauteur*longeur;
+        }
+    }
+    
+    class sphere extends figure3D
+    {
+        void set(double rayon)
+        {
+            this.rayon = rayon;
+        }
+        double volume()
+        {
+            return (4.0/3.0)*pi*rayon*rayon*rayon;
+        }
+        protected double rayon;
+    }
+    
+    class coneDeRevolution extends figure3D
+    {
+        void set(double rayon, double hauteur)
+        {
+            this.rayon = rayon;   
+            this.hauteur = hauteur;
+        }
+        double volume()
+        {
+            return pi*rayon*rayon*hauteur/3.0;
+        }
+        protected double hauteur;
+        protected double rayon;
+    }
+    
+    class pyramidehRect extends figure3D
+    {
+        double volume()
+        {
+            return h*hauteur*longeur/3.0;
+        }
+    }
+    
+    class pyramidehTrian extends figure3D
+    {
+        double volume()
+        {
+            return h*hauteur*longeur/6.0;
+        }
+    
+    }
+    
+    public static void main(String [] args)
+    {
+        figure2D globals = new Shapes().new figure2D();
+        
+        carre nouveauCarre = new Shapes().new carre();
+        nouveauCarre.set(5);
+        System.out.printf(
+        "carre:\n aire:%s\t perimetre:%s\t diagonale:%s", nouveauCarre.aire(), nouveauCarre.perimetre(), nouveauCarre.diagonale());
 
-class figure2D: public figureGeo
-{
-public:
-    virtual void set(int base, int hauteur)
-    {
-        this->base = base;
-        this->hauteur = hauteur;
-    }
-protected:
-    int base;
-    int hauteur;
-};
+        rectangle nouveauRectangle = new Shapes().new rectangle();
+        nouveauRectangle.set(5,4);
+        System.out.printf(
+        "rectangle:\n aire:%s\t perimetre:%s", nouveauCarre.aire(), nouveauCarre.perimetre());
 
-class figure3D: public figure2D
-{
-public:
-    virtual void set(int base, int hauteur, int longeur)
-    {
-        this->base = base;
-        this->hauteur = hauteur;
-        this->longeur = longeur;
-    }
-protected:
-    int longeur;
-};
+        parallelogramme nouveauParallelogramme = new Shapes().new parallelogramme();
+        nouveauParallelogramme.set(5,6);
+        System.out.printf(
+        "rectangle:\n aire:%s", nouveauCarre.aire());
 
-class rectangle: public figure2D
-{
-public:
-    int perimetre()
-    {
-        return base*2 + hauteur*2;
-    }
-    int aire()
-    {
-        return base*hauteur;
-    }
+        trapeze nouveauTrapeze = new Shapes().new trapeze();
+        nouveauTrapeze.set(6,3,8);
+        System.out.printf(
+        "rectangle:\n aire:%s", nouveauTrapeze.aire());
 
-};
+        triangle nouveauTriangle = new Shapes().new triangle();
+        nouveauTriangle.set(9,5);
+        System.out.printf(
+        "triangle:\n aire:%s", nouveauTriangle.aire());
 
-class carre: public figure2D
-{
-public:
-    void set(int base)
-    {
-        this->base = base;
-    }
-    int perimetre()
-    {
-        return base*4;
-    }
-    int aire()
-    {
-        return base*base;
-    }
-    int diagonale()
-    {
-        return base*sqrt(2);
-    }
-};
+        triangleEq nouveauTriangleEq = new Shapes().new triangleEq();
+        nouveauTriangleEq.set(4);
+        System.out.printf(
+        "triangleEq:\n aire:%s\t perimetre:%s\t hauteur:%s", nouveauTriangleEq.aire(), nouveauTriangleEq.perimetre(), nouveauTriangleEq.hauteur());
 
-class parallelogramme: public figure2D
-{
-public:
-    void set(int base, int hauteur)
-    {
-        this->base = base;
-        this->hauteur = hauteur;
+        triangleRecIso nouveauTriangleRecIso = new Shapes().new triangleRecIso();
+        nouveauTriangleRecIso.set(9);
+        System.out.printf(
+        "triangleRecIso:\n aire:%s\t hypothenuse:%s\t hauteur:%s", nouveauTriangleRecIso.aire(), nouveauTriangleRecIso.hypothenuse(), nouveauTriangleRecIso.hauteur());
+
+        cercle nouveauCercle = new Shapes().new cercle();
+        nouveauCercle.set(6);
+        System.out.printf(
+        "cercle:\n aire:%s\t perimetre:%s", nouveauCercle.aire(), nouveauCercle.perimetre());
+
+        secteurAngle nouveauSecteurAngle = new Shapes().new secteurAngle();
+        nouveauSecteurAngle.set(9,2*globals.pi);
+        System.out.printf(
+        "secteurAngle:\n aire:%s\t longeur:%s", nouveauSecteurAngle.aire(), nouveauSecteurAngle.longeur());
+
+        parallelepipede nouveauParallelepipede = new Shapes().new parallelepipede();
+        nouveauParallelepipede.set(9,5,8);
+        System.out.printf(
+        "parallelepipede:\n volume:%s", nouveauParallelepipede.volume());
+        
+        sphere nouveauSphere = new Shapes().new sphere();
+        nouveauSphere.set(6);
+        System.out.printf(
+        "sphere:\n volume:%s", nouveauSphere.volume());
+
+        coneDeRevolution nouveauConeDeRevolution = new Shapes().new coneDeRevolution();
+        nouveauConeDeRevolution.set(3,6);
+        System.out.printf(
+        "coneDeRevolution:\n volume:%s", nouveauConeDeRevolution.volume());
+
+        pyramidehRect nouveauPyramidehRect = new Shapes().new pyramidehRect();
+        nouveauPyramidehRect.set(3,6,4);
+        System.out.printf(
+        "pyramidehRect:\n volume:%s", nouveauPyramidehRect.volume());
+
+        pyramidehTrian nouveauPyramidehTrian = new Shapes().new pyramidehTrian();
+        nouveauPyramidehTrian.set(3,6,9);
+        System.out.printf(
+        "pyramidehRect:\n volume:%s", nouveauPyramidehTrian.volume());
     }
-    int aire()
-    {
-        return base*hauteur;
-    }
-};
-
-class trapeze: public figure2D
-{
-public:
-    void set(int grandeBase, int petiteBase, int hauteur)
-    {
-        this->grandeBase = grandeBase;
-        this->petiteBase = petiteBase;
-        this->hauteur = hauteur;
-    }
-    float aire()
-    {
-        return ((petiteBase + grandeBase) * hauteur)/2;
-    }
-protected:
-    int petiteBase;
-    int grandeBase;
-};
-
-class triangle: public figure2D
-{
-public:
-    int aire()
-    {
-        return base*hauteur/2; 
-    }
-};
-
-class triangleEq: public figure2D
-{
-public:
-    void set(int base)
-    {
-        this->base = base;
-    }
-    int perimetre()
-    {
-        return base*3;
-    }
-    float hauteur()
-    {
-        return base*sqrt(3)/4;
-    }
-    virtual float aire()
-    {
-        return (base*base)*sqrt(3)/4;
-    }
-};
-
-class triangleRecIso: public triangleEq
-{
-public:
-    int hypothenuse()
-    {
-        return base*sqrt(2);
-    }
-    int hauteur()
-    {
-        return base/sqrt(2);
-    }
-    float aire()
-    {
-        return base*base/2;
-    }
-};
-
-class cercle: public figure2D
-{
-public:
-    virtual void set(int rayon)
-    {
-        this->rayon = rayon;
-    }
-    float perimetre()
-    {
-        return 2*pi*rayon;
-    }
-    float aire()
-    {
-        return pi*rayon*rayon;
-    }
-protected:
-    int rayon;
-};
-
-class secteurAngle: public cercle
-{
-public:
-    void set(int rayon, int radiant)
-    {
-        this->rayon = rayon;
-        this->radiant = radiant;
-    }
-    float longeur()
-    {
-        return rayon*radiant;
-    }
-    float aire()
-    {
-        return radiant*rayon*rayon/2;
-    }
-protected:
-    float radiant;
-};
-
-class parallelepipede: public figure3D
-{
-public:
-    int volume()
-    {
-        return base*hauteur*longeur;
-    }
-};
-
-class sphere: public figure3D
-{
-public:
-    void set(int rayon)
-    {
-        this->rayon = rayon;
-    }
-    int volume()
-    {
-        return (4/3)*pi*rayon*rayon*rayon;
-    }
-protected:
-    int rayon;
-};
-
-class coneDeRevolution: public figure3D
-{
-public:
-    void set(int rayon, int hauteur)
-    {
-        this->rayon = rayon;   
-        this->hauteur = hauteur;
-    }
-    int volume()
-    {
-        return pi*rayon*rayon*hauteur/3;
-    }
-protected:
-    int hauteur;
-    int rayon;
-};
-
-class pyramideBaseRect: public figure3D
-{
-public:
-    int volume()
-    {
-        return base*hauteur*longeur/3;
-    }
-};
-class pyramideBaseTrian: public figure3D
-{
-public:
-    int volume()
-    {
-        return base*hauteur*longeur/6;
-    }
-
-};
-
-int main()
-{
-    carre nouveauCarre;
-    nouveauCarre.set(5);
-    cout << "carre:" << endl;
-    cout << "aire:" << nouveauCarre.aire() << endl;
-    cout << "perimetre:" << nouveauCarre.perimetre() << endl;
-    cout << "diagonale:" << nouveauCarre.diagonale() << endl << endl;
-
-    rectangle nouveauRectangle;
-    nouveauRectangle.set(5, 4);
-    cout << "rectangle:" << endl;
-    cout << "aire:" << nouveauRectangle.aire() << endl;
-    cout << "perimetre:" << nouveauRectangle.perimetre() << endl << endl;
-
-    parallelogramme nouveauParallelogramme;
-    nouveauParallelogramme.set(5, 6);
-    cout << "parallelogramme:" << endl;
-    cout << "aire:" << nouveauParallelogramme.aire() << endl << endl;
-
-    trapeze nouveauTrapeze;
-    nouveauTrapeze.set(6,3,8);
-    cout << "trapeze:" << endl;
-    cout << "aire:" << nouveauTrapeze.aire() << endl << endl;
-
-    triangle nouveauTriangle;
-    nouveauTriangle.set(9,5);
-    cout << "triangle:" << endl;
-    cout << "aire:" << nouveauTriangle.aire() << endl << endl ;
-
-    triangleEq nouveauTriangleEq;
-    nouveauTriangleEq.set(4);
-    cout << "triangleEq:" << endl;
-    cout << "aire:" << nouveauTriangleEq.aire() << endl;
-    cout << "perimetre:" << nouveauTriangleEq.perimetre() << endl;
-    cout << "hauteur:" << nouveauTriangleEq.hauteur() << endl << endl;
-
-    triangleRecIso nouveauTriangleRecIso;
-    nouveauTriangleRecIso.set(9);
-    cout << "triangleEq:" << endl;
-    cout << "aire:" << nouveauTriangleRecIso.aire() << endl;
-    cout << "hypothenuse:" << nouveauTriangleRecIso.hypothenuse() << endl;
-    cout << "hauteur:" << nouveauTriangleRecIso.hauteur() << endl << endl;
-
-    cercle nouveauCercle;
-    nouveauCercle.set(6);
-    cout << "cercle:" << endl;
-    cout << "aire:" << nouveauCercle.aire() << endl;
-    cout << "perimetre:" << nouveauCercle.perimetre() << endl << endl;
-
-    secteurAngle nouveauSecteurAngle;
-    nouveauSecteurAngle.set(9, 2*pi);
-    cout << "secteurAngle:" << endl;
-    cout << "aire:" << nouveauSecteurAngle.aire() << endl;
-    cout << "longeur:" << nouveauSecteurAngle.longeur() << endl << endl;
-
-    parallelepipede nouveauParallelepipede;
-    nouveauParallelepipede.set(9, 5, 8);
-    cout << "parallelepipede" << endl;
-    cout << "volume:" << nouveauParallelepipede.volume() << endl << endl;
-
-    sphere nouveauSphere;
-    nouveauSphere.set(6);
-    cout << "sphere:" << endl;
-    cout << "volume:" << nouveauSphere.volume() << endl << endl;
-
-    coneDeRevolution nouveauConeDeRevolution;
-    nouveauConeDeRevolution.set(3, 6);
-    cout << "coneDeRevolution:" << endl;
-    cout << "volume:" << nouveauConeDeRevolution.volume() << endl << endl;
-
-    pyramideBaseRect nouveauPyramideBaseRect;
-    nouveauPyramideBaseRect.set(3, 6, 4);
-    cout << "pyramideBaseRect:" << endl;
-    cout << "volume:" << nouveauPyramideBaseRect.volume() << endl << endl;
-
-    pyramideBaseTrian nouveauPyramideBaseTrian;
-    nouveauPyramideBaseTrian.set(3, 6, 9);
-    cout << "pyramideBaseRect:" << endl;
-    cout << "volume:" << nouveauPyramideBaseTrian.volume() << endl << endl;
-
-    return 0;
+    
 }
