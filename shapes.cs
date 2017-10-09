@@ -178,85 +178,85 @@ public class shapes
         carre nouveauCarre = new carre();
         nouveauCarre.b = 5;
         Console.WriteLine(
-        "carre:\t aire:{0}\t perimetre:{1}\t diagonale:{2}\t\t", nouveauCarre.aire(), nouveauCarre.perimetre(), nouveauCarre.diagonale());
+        "carre:\n aire:{0}\t perimetre:{1}\t diagonale:{2}\t\t", nouveauCarre.aire(), nouveauCarre.perimetre(), nouveauCarre.diagonale());
 
         rectangle nouveauRectangle = new rectangle();
         nouveauRectangle.b = 5;
         nouveauRectangle.hauteur = 4;
         Console.WriteLine(
-        "rectangle:\t aire:{0}\t perimetre:{1}\t\t", nouveauCarre.aire(), nouveauCarre.perimetre());
+        "rectangle:\n aire:{0}\t perimetre:{1}\t\t", nouveauCarre.aire(), nouveauCarre.perimetre());
 
         parallelogramme nouveauParallelogramme = new parallelogramme();
         nouveauParallelogramme.b = 5;
         nouveauParallelogramme.hauteur = 6;
         Console.WriteLine(
-        "rectangle:\t aire:{0}\t\t", nouveauCarre.aire());
+        "rectangle:\n aire:{0}\t\t", nouveauCarre.aire());
 
         trapeze nouveauTrapeze = new trapeze();
         nouveauTrapeze.petiteB = 6;
         nouveauTrapeze.grandeB = 3;
         nouveauTrapeze.hauteur = 8;
         Console.WriteLine(
-        "rectangle:\t aire:{0}\t\t", nouveauTrapeze.aire());
+        "rectangle:\n aire:{0}\t\t", nouveauTrapeze.aire());
 
         triangle nouveauTriangle = new triangle();
         nouveauTriangle.b = 9;
         nouveauTriangle.hauteur = 5;
         Console.WriteLine(
-        "triangle:\t aire:{0}\t\t", nouveauTriangle.aire());
+        "triangle:\n aire:{0}\t\t", nouveauTriangle.aire());
 
         triangleEq nouveauTriangleEq = new triangleEq();
         nouveauTriangleEq.b = 4;
         Console.WriteLine(
-        "triangleEq:\t aire:{0}\t perimetre:{1}\t hauteur:{2}\t\t", nouveauTriangleEq.aire(), nouveauTriangleEq.perimetre(), nouveauTriangleEq.h());
+        "triangleEq:\n aire:{0}\t perimetre:{1}\t hauteur:{2}\t\t", nouveauTriangleEq.aire(), nouveauTriangleEq.perimetre(), nouveauTriangleEq.h());
 
         triangleRecIso nouveauTriangleRecIso = new triangleRecIso();
         nouveauTriangleRecIso.b = 9;
         Console.WriteLine(
-        "triangleRecIso:\t aire:{0}\t hypothenuse:{1}\t hauteur:{2}\t\t", nouveauTriangleRecIso.aire(), nouveauTriangleRecIso.hypothenuse(), nouveauTriangleRecIso.h());
+        "triangleRecIso:\n aire:{0}\t hypothenuse:{1}\t hauteur:{2}\t\t", nouveauTriangleRecIso.aire(), nouveauTriangleRecIso.hypothenuse(), nouveauTriangleRecIso.h());
 
         cercle nouveauCercle = new cercle();
         nouveauCercle.rayon = 6;
         Console.WriteLine(
-        "cercle:\t aire:{0}\t perimetre:{1}\t\t", nouveauCercle.aire(), nouveauCercle.perimetre());
+        "cercle:\n aire:{0}\t perimetre:{1}\t\t", nouveauCercle.aire(), nouveauCercle.perimetre());
 
         secteurAngle nouveauSecteurAngle = new secteurAngle();
         nouveauSecteurAngle.rayon = 9;
         nouveauSecteurAngle.radiant = 2*globals.pi;
         Console.WriteLine(
-        "secteurAngle:\t aire:{0}\t longeur:{1}\t\t", nouveauSecteurAngle.aire(), nouveauSecteurAngle.longeur());
+        "secteurAngle:\n aire:{0}\t longeur:{1}\t\t", nouveauSecteurAngle.aire(), nouveauSecteurAngle.longeur());
 
         parallelepipede nouveauParallelepipede = new parallelepipede();
         nouveauParallelepipede.b = 9;
         nouveauParallelepipede.hauteur = 5;
         nouveauParallelepipede.longeur =  8;
         Console.WriteLine(
-        "parallelepipede:\t volume:{0}\t\t", nouveauParallelepipede.volume());
+        "parallelepipede:\n volume:{0}\t\t", nouveauParallelepipede.volume());
         
         sphere nouveauSphere = new sphere();
         nouveauSphere.rayon = 6;
         Console.WriteLine(
-        "sphere:\t volume:{0}\t\t", nouveauSphere.volume());
+        "sphere:\n volume:{0}\t\t", nouveauSphere.volume());
 
         coneDeRevolution nouveauConeDeRevolution = new coneDeRevolution();
         nouveauConeDeRevolution.rayon = 3;
         nouveauConeDeRevolution.hauteur = 6;
         Console.WriteLine(
-        "coneDeRevolution:\t volume:{0}\t\t", nouveauConeDeRevolution.volume());
+        "coneDeRevolution:\n volume:{0}\t\t", nouveauConeDeRevolution.volume());
 
         pyramideBaseRect nouveauPyramideBaseRect = new pyramideBaseRect();
         nouveauPyramideBaseRect.b = 3;
         nouveauPyramideBaseRect.hauteur = 6;
         nouveauPyramideBaseRect.longeur = 4;
         Console.WriteLine(
-        "pyramideBaseRect:\t volume:{0}\t\t", nouveauPyramideBaseRect.volume());
+        "pyramideBaseRect:\n volume:{0}\t\t", nouveauPyramideBaseRect.volume());
 
         pyramideBaseTrian nouveauPyramideBaseTrian = new pyramideBaseTrian();
         nouveauPyramideBaseTrian.b = 3;
         nouveauPyramideBaseTrian.hauteur = 6;
         nouveauPyramideBaseTrian.longeur = 9;
         Console.WriteLine(
-        "pyramideBaseRect:\t volume:{0}\t\t", nouveauPyramideBaseTrian.volume());
+        "pyramideBaseRect:\n volume:{0}\t\t", nouveauPyramideBaseTrian.volume());
     }
     
 }
